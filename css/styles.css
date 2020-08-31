@@ -4,6 +4,6 @@ background: linear-gradient(4deg, rgba(255,175,28,0.7678100263852243) 11%, rgba(
 text-align: center;
 }
 
-#show-journal-info {
+#show-journal-info, #entry-info {
   display: none;
 }
