@@ -1,16 +1,16 @@
 // Business Logic for Journal Entries
 
-function JournalEntry() {
+function Journal() {
   this.entries = [],
   this.entryId = 0;
 }
 
-JournalEntry.prototype.addEntry = function(entry) {
+Journal.prototype.addEntry = function(entry) {
   entry.id = this.assignId();
   this.entries.push(entry);
 }
 
-JournalEntry.prototype.assignId = function() {
+Journal.prototype.assignId = function() {
   this.entryId += 1;
   return this.entryId;
 }
@@ -28,12 +28,25 @@ Entry.prototype.returnWords = function() {
   return words.length;
 }
 
-Entry.prototype.returnConsonants = function() {
+const vowels = ["a","e","i","o","u"];
+/[aeiou]/
 
+Entry.prototype.returnConsonants = function() {
+  const numberOfVowels = this.returnVowels;
+  
 }
 
 Entry.prototype.returnVowels = function() {
-
+  let vowelsInString = [];
+  const text = this.body;
+  for (var c = 0; c < text.length; c++) {
+    const letter = text[c];
+    if (vowels.indexOf(letter) > -1) {
+      vowelsInString.push(letter);
+    }
+  }
+  //return vowelsInString;
+  return vowelsInString.length;
 }
 
 Entry.prototype.fullText = function() {
@@ -43,7 +56,7 @@ Entry.prototype.fullText = function() {
 // $("#myWordCountDisplay").text(entry.returnWords);
 
 // UI Logic
-let journalEntry = new JournalEntry();
+let journalEntry = new Journal();
 
 $(document).ready(function() {
   $("form#new-journal-entry").submit(function(event) {
@@ -53,8 +66,8 @@ $(document).ready(function() {
 
     let newEntry = new Entry(entryTitle,entryBody);
     journalEntry.addEntry(newEntry);
-    console.log(journalEntry);
-    console.log(journalEnewEntry.entries);
+    
+    console.log(newEntry.returnVowels());
   })
 })
 
